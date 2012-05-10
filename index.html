@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>mgrid</title>
+    <style type='text/css'>
+      body {
+        font:13px/20px 'Helvetica Neue';
+      }
+      #grid {
+        width:500px;
+        height:500px;
+        border:1px solid #000;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>mgrid - pico grid management</h2>
+    <div id='grid'></div>
+    <script src='mgrid.js'></script>
+    <script>
+      var g = mgrid();
+      g.parent(document.getElementById('grid'));
+      var z = 5;
+      for (var x = 0; x < Math.pow(2, z); x++) {
+        for (var y = 0; y < Math.pow(2, z); y++) {
+          var im = document.createElement('img');
+          im.src = 'http://a.tiles.mapbox.com/v3/mapbox.mapbox-streets/' + z + '/' + x + '/' + y + '.png';
+          g.tile([z, x, y], im);
+        }
+      }
+    </script>
+  </body>
+</html>
